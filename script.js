@@ -19,6 +19,6 @@ locationBtn.addEventListener("click", () =>{
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(onSuccess, onError);
     }else{
-        alert("Tarayıcınız coğrafi konum api'yi desteklemiyor");
+        alert("Tarayıcınız coğrafi konumu api'yi desteklemiyor");
     }
 });
