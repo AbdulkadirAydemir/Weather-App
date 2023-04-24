@@ -47,3 +47,30 @@ function fetchData(){
         infoTxt.classList.replace("pending", "error");
     });
 }
+
+function weatherDetails(info){
+    
+    if(info.cod == "404"){
+        infoTxt.classList.replace("pending", "error");
+        infoTxt.innerText = `${inputField.value} isn't a valid city name`;
+    }else{
+        const city = info.name;
+        const country = info.sys.country;
+        const {description, id} = info.weather[0];
+        const {temp, feels_like, humidity} = info.main;
+        
+        if(id == 800){
+            wIcon.src = "icons/clear.svg";
+        }else if(id >= 200 && id <= 232){
+            wIcon.src = "icons/storm.svg";  
+        }else if(id >= 600 && id <= 622){
+            wIcon.src = "icons/snow.svg";
+        }else if(id >= 701 && id <= 781){
+            wIcon.src = "icons/haze.svg";
+        }else if(id >= 801 && id <= 804){
+            wIcon.src = "icons/cloud.svg";
+        }else if((id >= 500 && id <= 531) || (id >= 300 && id <= 321)){
+            wIcon.src = "icons/rain.svg";
+        }
+    }
+}
